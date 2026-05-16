@@ -1,0 +1,28 @@
+{
+  "users": {},
+  "groups": {},
+  "products": [
+    {
+      "code": "GRUP",
+      "name": "Script Bot Jaga Grup WhatsApp",
+      "price": "Rp30.000 - Rp135.000",
+      "desc": "Bot penjaga grup dengan anti link, anti spam, welcome, rules, tagall, warning system."
+    },
+    {
+      "code": "BISNIS",
+      "name": "Script Bot Bisnis",
+      "price": "Rp40.000 - Rp160.000",
+      "desc": "Bot bisnis dengan katalog produk, order, payment, testimoni, FAQ, dan database."
+    },
+    {
+      "code": "COMBO",
+      "name": "Combo Bisnis + Jaga Grup",
+      "price": "Rp300.000",
+      "desc": "Paket gabungan fitur bisnis dan jaga grup WhatsApp."
+    }
+  ],
+  "orders": [],
+  "notes": {},
+  "totalOrder": 0,
+  "storeOpen": true
+}

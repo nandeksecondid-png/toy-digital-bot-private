@@ -1,0 +1,14 @@
+{
+  "name": "toy-private-combo-bot",
+  "version": "1.0.0",
+  "description": "TOY DIGITAL STORE - Private Combo Bisnis + Jaga Grup WhatsApp Bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.7.18",
+    "pino": "^9.0.0",
+    "qrcode-terminal": "^0.12.0"
+  }
+}
