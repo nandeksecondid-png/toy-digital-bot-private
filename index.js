@@ -13,20 +13,29 @@ await useMultiFileAuthState("./session")
 
 const sock = makeWASocket({
 logger: pino({ level: "silent" }),
-printQRInTerminal: true,
 auth: state,
 browser: ["TOY DIGITAL", "Chrome", "1.0.0"]
 })
 
 sock.ev.on("creds.update", saveCreds)
 
+if (!sock.authState.creds.registered) {
+
+const phoneNumber = "6285768514765"
+
+const code = await sock.requestPairingCode(phoneNumber)
+
+console.log(`
+=========================
+PAIRING CODE BOT:
+${code}
+=========================
+`)
+}
+
 sock.ev.on("connection.update", async (update) => {
 
-const { connection, lastDisconnect, qr } = update
-
-if (qr) {
-console.log("SCAN QR INI DI WHATSAPP")
-}
+const { connection, lastDisconnect } = update
 
 if (connection === "open") {
 console.log("BOT BERHASIL TERHUBUNG")
@@ -50,7 +59,6 @@ startBot()
 sock.ev.on("messages.upsert", async ({ messages }) => {
 
 const msg = messages[0]
-
 if (!msg.message) return
 
 const text =
@@ -62,43 +70,23 @@ const from = msg.key.remoteJid
 if (text === ".menu") {
 
 await sock.sendMessage(from, {
-text:
-`🔥 TOY DIGITAL BOT 🔥
+text: `🔥 TOY DIGITAL BOT 🔥
 
-📦 MENU BOT
+✅ BOT ONLINE
+✅ SCRIPT PRIVATE
+
+📦 MENU:
 • .menu
 • .owner
-• .ping
-• .script
-
-🛡️ FITUR GRUP
-• Anti Link
-• Welcome
-• Anti Spam
-• Anti Virtex
-
-💼 FITUR BISNIS
-• Auto Respon
-• Katalog Produk
-• Order Otomatis`
-})
-
-}
-
-if (text === ".owner") {
-
-await sock.sendMessage(from, {
-text: "Owner: TOY DIGITAL STORE"
+• .ping`
 })
 
 }
 
 if (text === ".ping") {
-
 await sock.sendMessage(from, {
 text: "BOT ONLINE ✅"
 })
-
 }
 
 })
